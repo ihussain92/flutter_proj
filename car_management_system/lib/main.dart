@@ -31,11 +31,16 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: HomeScreen());
+        home: HomeScreen(
+          carProvider: carProvider,
+        ));
   }
 }
 
 class HomeScreen extends StatelessWidget {
+  final CarProvider carProvider;
+
+  const HomeScreen({super.key, required this.carProvider});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,13 +70,15 @@ class HomeScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to the CarListScreen
-                      Navigator.of(context).push(
+                      Navigator.push(
+                        context,
                         MaterialPageRoute(
-                          builder: (context) => CarListScreen(
-                            carProvider: CarProvider(),
-                          ),
-                        ),
+                            builder: (context) => CarListScreen(
+                                  carProvider: carProvider,
+                                )),
                       );
+                      ;
+                      ;
                     },
                     child: Text('View Car List'),
                   ),
@@ -132,6 +139,13 @@ class CarListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Car List'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Back button icon
+          onPressed: () {
+            // Navigate back to the home screen when the back button is pressed
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Center(
         child: Container(

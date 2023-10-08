@@ -40,8 +40,11 @@ class CarDetailScreen extends StatelessWidget {
             SliverPersistentHeader(
               delegate: _SliverAppBarDelegate(
                 TabBar(
+                  labelColor: Colors.black,
                   tabs: [
-                    Tab(text: 'Car Details'), // First tab
+                    Tab(
+                      text: 'Car Details',
+                    ), // First tab
                     Tab(text: 'Engine Details'), // Second tab
                   ],
                 ),

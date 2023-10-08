@@ -43,134 +43,136 @@ class _CarInfoFormState extends State<CarInfoForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            const Text(
-              'Car Information',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
-            _images.isNotEmpty
-                ? SizedBox(
-                    height: 100.0,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _images.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Image.file(
-                            _images[index],
-                            width: 100.0,
-                            height: 100.0,
-                            fit: BoxFit.cover,
-                          ),
-                        );
-                      },
+    return Scaffold(
+      body: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              const Text(
+                'Car Information',
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              ),
+              _images.isNotEmpty
+                  ? SizedBox(
+                      height: 100.0,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: _images.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Image.file(
+                              _images[index],
+                              width: 100.0,
+                              height: 100.0,
+                              fit: BoxFit.cover,
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  : const Icon(
+                      Icons.add_a_photo,
+                      size: 55.0,
                     ),
-                  )
-                : const Icon(
-                    Icons.add_a_photo,
-                    size: 55.0,
-                  ),
-            ElevatedButton(
-              onPressed: _getImage,
-              child: const Text('Select Image'),
-            ),
-            TextFormField(
-              controller: makeController,
-              decoration: const InputDecoration(labelText: 'Car Make'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter the car make';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: modelController,
-              decoration: const InputDecoration(labelText: 'Car Model'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter the car model';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: yearController,
-              decoration: const InputDecoration(labelText: 'Year'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter the year';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-                controller: engineTypeController,
-                decoration: const InputDecoration(labelText: 'Engine Type'),
+              ElevatedButton(
+                onPressed: _getImage,
+                child: const Text('Select Image'),
+              ),
+              TextFormField(
+                controller: makeController,
+                decoration: const InputDecoration(labelText: 'Car Make'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the Engine Type';
+                    return 'Please enter the car make';
                   }
                   return null;
-                }),
-            TextFormField(
-                controller: horsepowerController,
-                decoration: const InputDecoration(labelText: 'Horsepower'),
-                keyboardType: TextInputType.number,
+                },
+              ),
+              TextFormField(
+                controller: modelController,
+                decoration: const InputDecoration(labelText: 'Car Model'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the HP';
+                    return 'Please enter the car model';
                   }
                   return null;
-                }),
-            TextFormField(
-                controller: fuelTypeController,
-                decoration: const InputDecoration(labelText: 'Fuel Type'),
+                },
+              ),
+              TextFormField(
+                controller: yearController,
+                decoration: const InputDecoration(labelText: 'Year'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the Fuel';
+                    return 'Please enter the year';
                   }
                   return null;
-                }),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  List<File> imageFiles =
-                      _images.map((xFile) => File(xFile.path)).toList();
+                },
+              ),
+              TextFormField(
+                  controller: engineTypeController,
+                  decoration: const InputDecoration(labelText: 'Engine Type'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the Engine Type';
+                    }
+                    return null;
+                  }),
+              TextFormField(
+                  controller: horsepowerController,
+                  decoration: const InputDecoration(labelText: 'Horsepower'),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the HP';
+                    }
+                    return null;
+                  }),
+              TextFormField(
+                  controller: fuelTypeController,
+                  decoration: const InputDecoration(labelText: 'Fuel Type'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the Fuel';
+                    }
+                    return null;
+                  }),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    List<File> imageFiles =
+                        _images.map((xFile) => File(xFile.path)).toList();
 
-                  Car newCar = Car(
-                    make: makeController.text,
-                    model: modelController.text,
-                    year: int.parse(yearController.text),
-                    images: imageFiles,
-                    engineType: engineTypeController.text,
-                    horsepower:
-                        (double.parse(horsepowerController.text)).toInt(),
-                    fuelType: fuelTypeController.text,
-                  );
+                    Car newCar = Car(
+                      make: makeController.text,
+                      model: modelController.text,
+                      year: int.parse(yearController.text),
+                      images: imageFiles,
+                      engineType: engineTypeController.text,
+                      horsepower:
+                          (double.parse(horsepowerController.text)).toInt(),
+                      fuelType: fuelTypeController.text,
+                    );
 
-                  widget.carProvider.addCar(newCar);
-                  print('Notify Listeners Called');
+                    widget.carProvider.addCar(newCar);
+                    print('Notify Listeners Called');
 
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CarListScreen(
-                              carProvider: widget.carProvider,
-                            )),
-                  );
-                }
-              },
-              child: const Text('Submit'),
-            ),
-          ],
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CarListScreen(
+                                carProvider: widget.carProvider,
+                              )),
+                    );
+                  }
+                },
+                child: const Text('Submit'),
+              ),
+            ],
+          ),
         ),
       ),
     );
