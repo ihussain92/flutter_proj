@@ -5,7 +5,7 @@ class CarDetailScreen extends StatelessWidget {
   final Car car; // Define the 'car' named parameter
   final Object heroTag;
 
-  CarDetailScreen({required this.car, required this.heroTag});
+  const CarDetailScreen({super.key, required this.car, required this.heroTag});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class CarDetailScreen extends StatelessWidget {
             ),
             SliverPersistentHeader(
               delegate: _SliverAppBarDelegate(
-                TabBar(
+                const TabBar(
                   labelColor: Colors.black,
                   tabs: [
                     Tab(

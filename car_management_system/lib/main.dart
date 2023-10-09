@@ -1,11 +1,17 @@
 import 'package:car_management_system/CarInfoFormState.dart';
+import 'package:car_management_system/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:car_management_system/car.dart';
 import 'package:car_management_system/CarProvider.dart';
 import 'cardetailsceen.dart';
 
-void main() {
+Future<void> main() async {
   final CarProvider carProvider = CarProvider();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp(
     carProvider: carProvider,
   ));
@@ -14,7 +20,8 @@ void main() {
 class MyApp extends StatelessWidget {
   final CarProvider carProvider;
 
-  MyApp({
+  const MyApp({
+    super.key,
     required this.carProvider,
   });
 
@@ -23,11 +30,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Car Management System',
         theme: ThemeData(
-          primaryColor: Colors.black,
-          backgroundColor: Colors.white, // Customize background color
+          primaryColor: Colors.black, // Customize background color
           textTheme: const TextTheme(
-            headline6: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            subtitle1: TextStyle(fontSize: 16),
+            titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            titleMedium: TextStyle(fontSize: 16),
           ),
         ),
         debugShowCheckedModeBanner: false,
@@ -77,10 +83,8 @@ class HomeScreen extends StatelessWidget {
                                   carProvider: carProvider,
                                 )),
                       );
-                      ;
-                      ;
                     },
-                    child: Text('View Car List'),
+                    child: const Text('View Car List'),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -93,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Text('Add Car'),
+                    child: const Text('Add Car'),
                   ),
                 ],
               ),
@@ -108,7 +112,8 @@ class HomeScreen extends StatelessWidget {
 class CarListScreen extends StatelessWidget {
   final CarProvider carProvider;
 
-  CarListScreen({
+  const CarListScreen({
+    super.key,
     required this.carProvider,
   });
 
@@ -140,7 +145,7 @@ class CarListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Car List'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Back button icon
+          icon: const Icon(Icons.arrow_back), // Back button icon
           onPressed: () {
             // Navigate back to the home screen when the back button is pressed
             Navigator.pop(context);
@@ -181,15 +186,15 @@ class CarListScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Make: ${car.make}',
-                              style: Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             Text(
                               'Model: ${car.model}',
-                              style: Theme.of(context).textTheme.subtitle1,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                             Text(
                               'Year: ${car.year}',
-                              style: Theme.of(context).textTheme.subtitle1,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ],
                         ),

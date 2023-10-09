@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "651994205777",
+    "firebase_url": "https://car-management-sys-default-rtdb.firebaseio.com",
+    "project_id": "car-management-sys",
+    "storage_bucket": "car-management-sys.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651994205777:android:2894b89e4eb903d16db270",
+        "android_client_info": {
+          "package_name": "com.example.car_management_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBHmBOu4wGvGAkb0WzoBeSZL0srqEtsBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
