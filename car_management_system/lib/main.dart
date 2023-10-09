@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Car Management System',
         theme: ThemeData(
-          primaryColor: Colors.black, // Customize background color
+          primaryColor: Colors.black,
           textTheme: const TextTheme(
             titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             titleMedium: TextStyle(fontSize: 16),
@@ -75,7 +75,6 @@ class HomeScreen extends StatelessWidget {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to the CarListScreen
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -88,7 +87,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to the CarInfoForm
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => CarInfoForm(
@@ -145,9 +143,8 @@ class CarListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Car List'),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back), // Back button icon
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Navigate back to the home screen when the back button is pressed
             Navigator.pop(context);
           },
         ),
@@ -162,7 +159,7 @@ class CarListScreen extends StatelessWidget {
 
               return InkWell(
                 onTap: () {
-                  _showCarDetail(context, car); // Navigate to car details
+                  _showCarDetail(context, car);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -173,8 +170,7 @@ class CarListScreen extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: Image.file(
-                            car.images[
-                                0], // Assuming the car object has a list of images as Files
+                            car.images[0],
                             width: 200,
                           ),
                         ),
