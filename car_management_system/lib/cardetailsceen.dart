@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:car_management_system/car.dart';
 
 class CarDetailScreen extends StatelessWidget {
-  final Car car; // Define the 'car' named parameter
+  final Car car; 
   final Object heroTag;
 
   CarDetailScreen({required this.car, required this.heroTag});
@@ -10,7 +10,7 @@ class CarDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2, // Number of tabs
+      length: 2, 
       child: Scaffold(
         body: CustomScrollView(
           slivers: <Widget>[
@@ -26,11 +26,11 @@ class CarDetailScreen extends StatelessWidget {
                   'Car Details - ${car.make} ${car.model}',
                 ),
                 background: Hero(
-                  tag: heroTag, // Unique hero tag for the image
+                  tag: heroTag, 
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.file(
-                      car.images[0], // Display the car image
+                      car.images[0],
                       width: 200,
                     ),
                   ),
@@ -44,8 +44,8 @@ class CarDetailScreen extends StatelessWidget {
                   tabs: [
                     Tab(
                       text: 'Car Details',
-                    ), // First tab
-                    Tab(text: 'Engine Details'), // Second tab
+                    ), =
+                    Tab(text: 'Engine Details'), 
                   ],
                 ),
               ),
@@ -54,7 +54,7 @@ class CarDetailScreen extends StatelessWidget {
             SliverFillRemaining(
               child: TabBarView(
                 children: [
-                  // First tab view - Car Details
+                 
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -72,12 +72,12 @@ class CarDetailScreen extends StatelessWidget {
                           'Year: ${car.year}',
                           style: const TextStyle(fontSize: 18),
                         ),
-                        // Add other car details as needed
+                        
                       ],
                     ),
                   ),
 
-                  // Second tab view - Engine Details
+                 
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +94,7 @@ class CarDetailScreen extends StatelessWidget {
                           'Fuel Type: ${car.fuelType}',
                           style: const TextStyle(fontSize: 18),
                         ),
-                        // Add other engine details as needed
+                       
                       ],
                     ),
                   ),
