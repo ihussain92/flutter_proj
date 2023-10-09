@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         title: 'Car Management System',
         theme: ThemeData(
           primaryColor: Colors.black,
-          backgroundColor: Colors.white, // Customize background color
+          backgroundColor: Colors.white, 
           textTheme: const TextTheme(
             headline6: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             subtitle1: TextStyle(fontSize: 16),
@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to the CarListScreen
+                      
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to the CarInfoForm
+                      
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => CarInfoForm(
@@ -140,9 +140,9 @@ class CarListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Car List'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Back button icon
+          icon: Icon(Icons.arrow_back), 
           onPressed: () {
-            // Navigate back to the home screen when the back button is pressed
+            
             Navigator.pop(context);
           },
         ),
@@ -169,7 +169,7 @@ class CarListScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                           child: Image.file(
                             car.images[
-                                0], // Assuming the car object has a list of images as Files
+                                0], 
                             width: 200,
                           ),
                         ),
