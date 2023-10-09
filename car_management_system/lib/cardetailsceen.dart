@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:car_management_system/car.dart';
 
 class CarDetailScreen extends StatelessWidget {
-  final Car car; 
+  final Car car;
   final Object heroTag;
 
   const CarDetailScreen({super.key, required this.car, required this.heroTag});
@@ -10,7 +10,7 @@ class CarDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2, 
+      length: 2,
       child: Scaffold(
         body: CustomScrollView(
           slivers: <Widget>[
@@ -26,7 +26,7 @@ class CarDetailScreen extends StatelessWidget {
                   'Car Details - ${car.make} ${car.model}',
                 ),
                 background: Hero(
-                  tag: heroTag, 
+                  tag: heroTag,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.file(
@@ -44,8 +44,8 @@ class CarDetailScreen extends StatelessWidget {
                   tabs: [
                     Tab(
                       text: 'Car Details',
-                    ), =
-                    Tab(text: 'Engine Details'), 
+                    ),
+                    Tab(text: 'Engine Details'),
                   ],
                 ),
               ),
@@ -54,7 +54,6 @@ class CarDetailScreen extends StatelessWidget {
             SliverFillRemaining(
               child: TabBarView(
                 children: [
-                 
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -72,12 +71,9 @@ class CarDetailScreen extends StatelessWidget {
                           'Year: ${car.year}',
                           style: const TextStyle(fontSize: 18),
                         ),
-                        
                       ],
                     ),
                   ),
-
-                 
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +90,6 @@ class CarDetailScreen extends StatelessWidget {
                           'Fuel Type: ${car.fuelType}',
                           style: const TextStyle(fontSize: 18),
                         ),
-                       
                       ],
                     ),
                   ),

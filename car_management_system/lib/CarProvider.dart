@@ -1,5 +1,5 @@
 import 'package:car_management_system/car.dart';
-import 'package:flutter/foundation.dart'; 
+import 'package:flutter/foundation.dart';
 
 class CarProvider with ChangeNotifier {
   List<Car> cars = [];
